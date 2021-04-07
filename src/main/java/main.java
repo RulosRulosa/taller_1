@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class main {
-    private static double a;
+    private static int a;
     static Scanner input = new Scanner(System.in);
 
     public static void main (String[] args){
@@ -23,11 +23,13 @@ public class main {
             switch (opcion){
                 case "1":
                     System.out.println("El binario es:");
+                   convertirBin(a);
                     imprimirBin();
 
                     break;
                 case "2":
                     System.out.println("El decimal es: ");
+                    convertirEnt(a);
                     imprimirDec();
 
                     break;
@@ -74,10 +76,11 @@ public class main {
     }
     public static int convertirBin(int a){
 
+        Integer.parseInt(Integer.toBinaryString(a));
         return a;
     }
-    public static int convertirInt(int a){
-
+    public static int convertirEnt(int a){
+        Integer.parseInt(Integer.toString(a), 2);
         return a;
     }
 

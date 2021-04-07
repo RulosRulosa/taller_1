@@ -7,33 +7,34 @@ public class main {
     public static void main (String[] args){
 
         System.out.println("Bienvenido al programa del taller 1 ");
-        boolean x= true;
 
-        ingresarValor();
 
-            System.out.println("a: " + a + " ¿Qué operación desea realizar? \n");
+
+
             System.out.println("Las opciones son: ");
             System.out.println("1. Mostrar representación binaria");
             System.out.println("2. Mostrar representación decimal");
             System.out.println("0. salir");
 
 
-            String opcion= input.nextLine();
+            int opcion= input.nextInt();
 
             switch (opcion){
-                case "1":
+                case 1:
+                    ingresarEnt();
                     System.out.println("El binario es:");
                    convertirBin(a);
                     imprimirBin();
 
                     break;
-                case "2":
+                case 2:
+                    ingresarBin();
                     System.out.println("El decimal es: ");
                     convertirEnt(a);
                     imprimirDec();
 
                     break;
-                case "0":
+                case 0:
                     System.out.println("Adiós");
 
                     break;
@@ -46,23 +47,23 @@ public class main {
 
         return a;
     }
-    public boolean validarNum(int a){
+    public boolean validarNum(){
         if(0>a || a>255){
             System.out.println("el valor excede rango");
             System.out.println("ingrese de nuevo");
-            ingresarValor();
+            ingresarEnt();
             return false;
 
         }
         return true;
     }
-    public boolean validarBinario(int numBin){
-        String bin8= Integer.toString(numBin);
+    public boolean validarBinario(){
+        String bin8= Integer.toString(a);
 
         if(bin8.length()>8){
             System.out.println("el número excede los dígitos \n");
             System.out.println("intente de nuevo");
-            ingresarValor();
+            ingresarBin();
             return false;
         }
 
@@ -84,15 +85,25 @@ public class main {
         return a;
     }
 
-
-    public static void ingresarValor (){
+    public static void ingresarBin(){
 
         try{ System.out.println("ingrese el valor de a");
             a= input.nextInt();
         }catch (Exception e){
             System.out.println("Error: entrada no válida");
             if (input.hasNextLine()) input.nextLine();
-            ingresarValor();
+            ingresarBin();
+        }
+
+    }
+    public static void ingresarEnt(){
+
+        try{ System.out.println("ingrese el valor de a");
+            a= input.nextInt();
+        }catch (Exception e){
+            System.out.println("Error: entrada no válida");
+            if (input.hasNextLine()) input.nextLine();
+            ingresarEnt();
         }
 
     }
